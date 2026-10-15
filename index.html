@@ -45,6 +45,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            text-align: center;
         }
 
         img {
@@ -62,7 +63,20 @@
             width: 100%;
             max-width: 1240px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
+        }
+
+        /* EFECTO SUAVE AL APARECER EN PANTALLA (REVELADO POR SCROLL / PRIMERA CARGA) */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.25, 1), transform 0.75s cubic-bezier(0.2, 0.8, 0.25, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* HEADER */
@@ -90,6 +104,7 @@
             gap: 14px;
             cursor: pointer;
             user-select: none;
+            text-align: left;
         }
 
         .brand-logo {
@@ -167,10 +182,10 @@
 
         .page-view.active-view {
             display: block;
-            animation: fadeIn 0.35s ease-out;
+            animation: fadeIn 0.4s ease-out;
         }
 
-        /* HERO CON FONDO.JPEG */
+        /* HERO */
         .hero {
             position: relative;
             min-height: 84vh;
@@ -188,6 +203,9 @@
         .hero-content {
             max-width: 840px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero-tag {
@@ -221,8 +239,6 @@
             margin-bottom: 36px;
             color: #f7f5f0;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
             font-weight: 300;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
@@ -237,6 +253,7 @@
         .btn-primary {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             background: #ffffff;
             color: var(--primary);
@@ -259,6 +276,7 @@
         .btn-whatsapp {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             background: #25D366;
             color: #ffffff;
@@ -280,6 +298,7 @@
         .btn-call {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             background: var(--primary);
             color: #ffffff;
@@ -332,7 +351,7 @@
             font-size: 1.08rem;
         }
 
-        /* NOSOTROS EN INICIO (FOTO1.JPEG LIMPIO) */
+        /* NOSOTROS EN INICIO */
         .about-section {
             background: #ffffff;
             border-top: 1px solid var(--border);
@@ -344,11 +363,13 @@
             grid-template-columns: 1fr 1fr;
             gap: 55px;
             align-items: center;
+            text-align: center;
         }
 
         .about-visual {
             display: flex;
             justify-content: center;
+            align-items: center;
             width: 100%;
         }
 
@@ -361,10 +382,17 @@
             box-shadow: var(--shadow-soft);
             cursor: zoom-in;
             transition: var(--transition);
+            margin: 0 auto;
         }
 
         .about-image-main:hover {
             transform: scale(1.02);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .about-content h3 {
@@ -373,32 +401,41 @@
             color: var(--primary);
             margin-bottom: 20px;
             line-height: 1.25;
+            text-align: center;
         }
 
         .about-content p {
             color: var(--text-muted);
             font-size: 1.02rem;
             margin-bottom: 16px;
+            text-align: center;
+            max-width: 580px;
         }
 
         .about-checklist {
             list-style: none;
             margin: 22px 0 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
         .about-checklist li {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
             font-weight: 500;
             color: var(--text-dark);
-            margin-bottom: 12px;
             font-size: 0.98rem;
+            text-align: center;
         }
 
         .about-checklist i {
             color: var(--secondary);
             font-size: 1.15rem;
+            flex-shrink: 0;
         }
 
         .grid-features {
@@ -415,6 +452,9 @@
             box-shadow: var(--shadow-soft);
             border: 1px solid var(--border);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .feature-card:hover {
@@ -433,7 +473,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.75rem;
-            margin: 0 auto 20px auto;
+            margin-bottom: 20px;
             transition: var(--transition);
         }
 
@@ -453,6 +493,7 @@
         .feature-card p {
             color: var(--text-muted);
             font-size: 0.96rem;
+            text-align: center;
         }
 
         /* CONTACTO INICIO */
@@ -464,6 +505,9 @@
             text-align: center;
             margin: 30px auto 70px auto;
             box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .contact-cta h3 {
@@ -471,13 +515,15 @@
             font-size: clamp(2rem, 3.6vw, 2.7rem);
             color: var(--primary);
             margin-bottom: 14px;
+            text-align: center;
         }
 
         .contact-cta p {
             font-size: 1.1rem;
             max-width: 620px;
-            margin: 0 auto 32px auto;
+            margin: 0 auto 28px auto;
             color: var(--text-muted);
+            text-align: center;
         }
 
         .contact-buttons-row {
@@ -486,6 +532,45 @@
             justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .contact-social-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .contact-social-wrap span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .social-icon-btn-contact {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon-btn-contact:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
         /* CATÁLOGO PRODUCTOS */
@@ -503,6 +588,9 @@
             border: 1px solid var(--border);
             margin-bottom: 40px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .catalog-top-bar h2 {
@@ -517,6 +605,7 @@
             font-size: 1.05rem;
             max-width: 650px;
             margin: 0 auto 24px auto;
+            text-align: center;
         }
 
         .catalog-controls {
@@ -525,6 +614,7 @@
             gap: 16px;
             justify-content: center;
             align-items: center;
+            width: 100%;
         }
 
         .search-box {
@@ -543,6 +633,7 @@
             font-size: 0.95rem;
             outline: none;
             transition: var(--transition);
+            text-align: left;
         }
 
         .search-box input:focus {
@@ -564,6 +655,7 @@
             flex-wrap: wrap;
             gap: 8px;
             justify-content: center;
+            align-items: center;
         }
 
         .filter-btn {
@@ -577,6 +669,7 @@
             cursor: pointer;
             transition: var(--transition);
             font-family: inherit;
+            text-align: center;
         }
 
         .filter-btn:hover, .filter-btn.active {
@@ -600,7 +693,9 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            align-items: center;
             position: relative;
+            text-align: center;
         }
 
         .product-card:hover {
@@ -616,6 +711,9 @@
             background: #f6f3f8;
             overflow: hidden;
             cursor: zoom-in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-img {
@@ -662,7 +760,9 @@
             padding: 22px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             flex-grow: 1;
+            width: 100%;
             text-align: center;
         }
 
@@ -672,6 +772,7 @@
             font-weight: 700;
             margin-bottom: 8px;
             line-height: 1.3;
+            text-align: center;
         }
 
         .product-description {
@@ -680,6 +781,7 @@
             line-height: 1.5;
             margin-bottom: 16px;
             flex-grow: 1;
+            text-align: center;
         }
 
         .product-highlight {
@@ -738,6 +840,9 @@
             border: 1px solid var(--border);
             margin-bottom: 40px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .dessert-top-bar h2 {
@@ -752,11 +857,12 @@
             font-size: 1.05rem;
             max-width: 700px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .dessert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 28px;
             margin-bottom: 45px;
         }
@@ -770,6 +876,7 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
@@ -786,6 +893,9 @@
             background: #f6f3f8;
             overflow: hidden;
             cursor: zoom-in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .dessert-img-container img {
@@ -799,8 +909,10 @@
             padding: 22px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             flex-grow: 1;
             text-align: center;
+            width: 100%;
         }
 
         .dessert-card-content h4 {
@@ -808,12 +920,14 @@
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 8px;
+            text-align: center;
         }
 
         .dessert-card-content p {
             font-size: 0.92rem;
             color: var(--text-muted);
             line-height: 1.5;
+            text-align: center;
         }
 
         /* INFORMACIÓN INFERIOR DE MESAS */
@@ -824,6 +938,9 @@
             padding: 45px 35px;
             box-shadow: var(--shadow-soft);
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .dessert-info-header {
@@ -842,6 +959,7 @@
         .dessert-info-header p {
             color: var(--text-muted);
             font-size: 1.05rem;
+            text-align: center;
         }
 
         .dessert-specs-grid {
@@ -849,6 +967,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-bottom: 35px;
+            width: 100%;
         }
 
         .dessert-spec-box {
@@ -857,6 +976,9 @@
             border-radius: var(--radius-md);
             padding: 25px 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .dessert-spec-box i {
@@ -870,12 +992,14 @@
             font-size: 1.1rem;
             margin-bottom: 8px;
             font-weight: 700;
+            text-align: center;
         }
 
         .dessert-spec-box p {
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.45;
+            text-align: center;
         }
 
         .dessert-cta-action {
@@ -887,6 +1011,7 @@
             align-items: center;
             gap: 16px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         /* LIGHTBOX MANUAL */
@@ -919,6 +1044,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         .lightbox-content img {
@@ -943,6 +1069,7 @@
             margin-top: 4px;
             color: #c0b8c9;
             font-size: 0.85rem;
+            text-align: center;
         }
 
         .lightbox-close {
@@ -998,13 +1125,14 @@
             right: -60px;
         }
 
-        /* FOOTER CON REDES SOCIALES LIMPIAS */
+        /* FOOTER */
         footer {
             background: #18141d;
             color: #c0b8c9;
             padding: 65px 0 28px 0;
             margin-top: auto;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
         }
 
         .footer-grid {
@@ -1012,6 +1140,13 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 45px;
             margin-bottom: 45px;
+            text-align: left;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .footer-brand h4 {
@@ -1030,7 +1165,6 @@
             margin-bottom: 18px;
         }
 
-        /* REDES SOCIALES SÓLO ICONOS, DISCRETAS Y BIEN ALINEADAS */
         .footer-social-icons {
             display: flex;
             align-items: center;
@@ -1058,6 +1192,12 @@
             transform: translateY(-2px);
         }
 
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         .footer-col h5 {
             color: #fff;
             font-size: 1.08rem;
@@ -1078,10 +1218,9 @@
 
         .footer-links {
             list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .footer-links button, .footer-links a {
@@ -1141,20 +1280,30 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE Y CENTRADO COMPLETO EN MÓVILES */
         @media (max-width: 992px) {
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
-                text-align: center;
-            }
-
-            .about-checklist li {
-                justify-content: center;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
+                text-align: center;
+            }
+
+            .footer-brand, .footer-col {
+                align-items: center;
+            }
+
+            .footer-col h5::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-links button, .footer-links a {
+                justify-content: center;
+                text-align: center;
             }
 
             .lightbox-prev {
@@ -1167,22 +1316,27 @@
         }
 
         @media (max-width: 768px) {
+            .nav-wrapper {
+                height: 72px;
+            }
+
             .mobile-toggle {
                 display: block;
             }
 
             .nav-menu {
                 position: fixed;
-                top: 80px;
+                top: 72px;
                 left: 0;
                 width: 100%;
                 background: #ffffff;
                 flex-direction: column;
                 gap: 0;
-                padding: 15px 0;
+                padding: 16px 0;
                 border-bottom: 1px solid var(--border);
                 box-shadow: 0 10px 20px rgba(0,0,0,0.08);
                 display: none;
+                align-items: center;
             }
 
             .nav-menu.open {
@@ -1192,50 +1346,110 @@
             .nav-link {
                 width: 100%;
                 text-align: center;
-                padding: 14px 0;
+                padding: 14px 20px;
             }
 
             .nav-link.active::after {
                 display: none;
             }
 
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                text-align: center;
+            .section-padding {
+                padding: 60px 0;
             }
 
-            .footer-brand p {
-                margin: 0 auto 16px auto;
+            .hero {
+                min-height: 80vh;
+                padding: 70px 16px;
             }
 
-            .footer-social-icons {
-                justify-content: center;
+            .hero h2 {
+                font-size: 2.2rem;
             }
 
-            .footer-col h5::after {
-                left: 50%;
-                transform: translateX(-50%);
+            .hero p {
+                font-size: 1.05rem;
             }
 
-            .contact-cta {
-                padding: 40px 20px;
-            }
-
-            .dessert-info-section {
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-buttons, .contact-buttons-row, .dessert-cta-action {
+            .hero-buttons {
                 flex-direction: column;
                 width: 100%;
+                max-width: 320px;
             }
 
             .btn-primary, .btn-whatsapp, .btn-call {
                 width: 100%;
-                justify-content: center;
+                text-align: center;
+            }
+
+            .about-image-main {
+                max-width: 340px;
+                height: 340px;
+            }
+
+            .contact-cta {
+                padding: 35px 20px;
+                margin: 20px auto 50px auto;
+            }
+
+            .contact-buttons-row {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-brand p {
+                text-align: center;
+            }
+
+            .dessert-info-section {
+                padding: 30px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .brand-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .brand-logo {
+                width: 48px;
+                height: 48px;
+            }
+
+            .hero h2 {
+                font-size: 1.95rem;
+            }
+
+            .about-image-main {
+                max-width: 280px;
+                height: 280px;
+            }
+
+            .catalog-top-bar, .dessert-top-bar {
+                padding: 24px 16px;
+            }
+
+            .catalog-top-bar h2, .dessert-top-bar h2 {
+                font-size: 1.85rem;
+            }
+
+            .product-image-container, .dessert-img-container {
+                height: 220px;
+            }
+
+            .lightbox-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -1270,7 +1484,7 @@
     <!-- PÁGINA 1: INICIO -->
     <main id="viewHome" class="page-view active-view">
         <section class="hero">
-            <div class="hero-content">
+            <div class="hero-content reveal-on-scroll">
                 <div class="hero-tag">
                     <i class="fa-solid fa-wheat-awn"></i> Horneado con amor y paciencia
                 </div>
@@ -1284,14 +1498,14 @@
             </div>
         </section>
 
-        <!-- SECCIÓN NOSOTROS (CON FOTO1.JPEG Y SIN RECUADRO SUPERPUESTO) -->
+        <!-- SECCIÓN NOSOTROS -->
         <section class="section-padding about-section" id="aboutSection">
             <div class="container">
                 <div class="about-grid">
-                    <div class="about-visual">
+                    <div class="about-visual reveal-on-scroll">
                         <img src="foto1.jpeg" alt="Taller de panadería Cake Toshi" class="about-image-main" onclick="openGallery(['foto1.jpeg'], 'Cake Toshi')" onerror="this.src='https://placehold.co/600x700/4b167a/ffffff?text=Cake+Toshi'">
                     </div>
-                    <div class="about-content">
+                    <div class="about-content reveal-on-scroll">
                         <h3>El Placer de Compartir Buena Mesa</h3>
                         <p>Cake Toshi nació de la admiración por el oficio panadero clásico: ese momento íntimo en que el horno comienza a despedir su fragancia y sabemos que algo reconfortante está listo para salir.</p>
                         <p>Desde nuestro pan de mesa y conchas tradicionales, hasta los cheesecakes, bocadillos finos y montajes de mesas de dulces y postres para tus eventos especiales, buscamos que cada mordida transmita calidez de hogar y auténtico sabor.</p>
@@ -1313,14 +1527,14 @@
         <!-- PILARES -->
         <section class="section-padding">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal-on-scroll">
                     <span>Nuestra Promesa</span>
                     <h3>El Secreto de Nuestro Taller</h3>
                     <p>No usamos atajos industriales ni saborizantes artificiales. Creemos en el tiempo correcto de fermentación y en el sabor genuino de la buena cocina.</p>
                 </div>
 
                 <div class="grid-features">
-                    <div class="feature-card">
+                    <div class="feature-card reveal-on-scroll">
                         <div class="feature-icon-wrapper">
                             <i class="fa-solid fa-bread-slice"></i>
                         </div>
@@ -1328,7 +1542,7 @@
                         <p>Respetamos las fermentaciones naturales y las técnicas que otorgan una textura dorada y crujiente por fuera, y suave por dentro.</p>
                     </div>
 
-                    <div class="feature-card">
+                    <div class="feature-card reveal-on-scroll">
                         <div class="feature-icon-wrapper">
                             <i class="fa-solid fa-seedling"></i>
                         </div>
@@ -1336,7 +1550,7 @@
                         <p>Mantequilla pura, fruta seleccionada en su punto óptimo, frutos secos frescos y harinas que cuidan tu digestión.</p>
                     </div>
 
-                    <div class="feature-card">
+                    <div class="feature-card reveal-on-scroll">
                         <div class="feature-icon-wrapper">
                             <i class="fa-solid fa-heart"></i>
                         </div>
@@ -1349,7 +1563,7 @@
 
         <!-- CONTACTO INICIO -->
         <section class="container" id="contactSection">
-            <div class="contact-cta">
+            <div class="contact-cta reveal-on-scroll">
                 <h3>¿Planeando una reunión, evento o un antojo especial?</h3>
                 <p>Te atendemos con gusto para tomar tu pedido artesanal, cotizar tu mesa de postres o confirmar disponibilidad del día.</p>
                 
@@ -1361,6 +1575,16 @@
                         <i class="fa-brands fa-whatsapp"></i> Contacto
                     </a>
                 </div>
+
+                <div class="contact-social-wrap">
+                    <span>Síguenos:</span>
+                    <a href="https://www.facebook.com/profile.php?id=100063627190976&locale=es_LA" target="_blank" rel="noopener noreferrer" class="social-icon-btn-contact" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/caketoshi/" target="_blank" rel="noopener noreferrer" class="social-icon-btn-contact" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -1368,7 +1592,7 @@
     <!-- PÁGINA 2: NUESTROS PRODUCTOS -->
     <main id="viewCatalog" class="page-view catalog-page">
         <div class="container">
-            <div class="catalog-top-bar">
+            <div class="catalog-top-bar reveal-on-scroll">
                 <h2>Vitrina de Productos Artesanales</h2>
                 <p>Nuestra selección de pan dulce, pan de mesa, galletas crujientes, postres fríos y opciones saladas elaboradas cada día.</p>
                 
@@ -1395,14 +1619,14 @@
     <!-- PÁGINA 3: MESAS DE DULCES Y POSTRES -->
     <main id="viewDessert" class="page-view dessert-page">
         <div class="container">
-            <div class="dessert-top-bar">
+            <div class="dessert-top-bar reveal-on-scroll">
                 <h2>Mesas de Dulces & Postres para Eventos</h2>
                 <p>Las fotos cambian automáticamente en las colecciones. Haz clic en cualquiera de ellas para verla completa y navegar con las flechas.</p>
             </div>
 
             <div class="dessert-grid">
                 <!-- Montaje General -->
-                <div class="dessert-card">
+                <div class="dessert-card reveal-on-scroll">
                     <div class="dessert-img-container" onclick="openGallery(['mesa1.jpeg'], 'Montaje Integral de Mesa')">
                         <img src="mesa1.jpeg" alt="Montaje completo de mesa de postres temática" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Mesa+de+Postres'">
                     </div>
@@ -1412,8 +1636,8 @@
                     </div>
                 </div>
 
-                <!-- Cupcakes Temáticos (Agrupando mesa3, mesa2 y mesa6 con carrusel automático) -->
-                <div class="dessert-card">
+                <!-- Cupcakes Temáticos -->
+                <div class="dessert-card reveal-on-scroll">
                     <div class="dessert-img-container" 
                          data-images='["mesa3.jpeg", "mesa2.jpeg", "mesa6.jpeg"]' 
                          data-title="Cupcakes & Toppers Temáticos"
@@ -1428,7 +1652,7 @@
                 </div>
 
                 <!-- Vasitos Gourmet -->
-                <div class="dessert-card">
+                <div class="dessert-card reveal-on-scroll">
                     <div class="dessert-img-container" onclick="openGallery(['mesa8.jpeg'], 'Vasitos Gourmet Individuales')">
                         <img src="mesa8.jpeg" alt="Torre de postres individuales en vasito" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Vasitos+Gourmet'">
                     </div>
@@ -1439,7 +1663,7 @@
                 </div>
 
                 <!-- Mini Brownies -->
-                <div class="dessert-card">
+                <div class="dessert-card reveal-on-scroll">
                     <div class="dessert-img-container" onclick="openGallery(['mesa5.jpeg'], 'Mini Brownies con Fruta')">
                         <img src="mesa5.jpeg" alt="Mini brownies individuales con fruta fresca" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Mini+Brownies'">
                     </div>
@@ -1450,7 +1674,7 @@
                 </div>
 
                 <!-- Recuerdos y Panquecitos Empaquetados -->
-                <div class="dessert-card">
+                <div class="dessert-card reveal-on-scroll">
                     <div class="dessert-img-container" onclick="openGallery(['mesa7.jpeg'], 'Detalles Personalizados')">
                         <img src="mesa7.jpeg" alt="Postres y panquecitos empaquetados para eventos" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Detalles+Personalizados'">
                     </div>
@@ -1460,8 +1684,8 @@
                     </div>
                 </div>
 
-                <!-- Barra Salada y Palomitas (Agrupando mesa4 y WhatsApp Image con carrusel automático) -->
-                <div class="dessert-card">
+                <!-- Barra Salada y Palomitas -->
+                <div class="dessert-card reveal-on-scroll">
                     <div class="dessert-img-container" 
                          data-images='["mesa4.jpeg", "WhatsApp Image 2026-10-14 at 5.26.21 PM (5).jpeg"]' 
                          data-title="Barra de Botanas & Palomitas"
@@ -1477,7 +1701,7 @@
             </div>
 
             <!-- DESCRIPCIÓN DE MESAS -->
-            <section class="dessert-info-section">
+            <section class="dessert-info-section reveal-on-scroll">
                 <div class="dessert-info-header">
                     <span>Opciones y Montajes</span>
                     <h3>¿Qué puede incluir tu Mesa de Postres y Dulces?</h3>
@@ -1540,10 +1764,10 @@
         </div>
     </div>
 
-    <!-- FOOTER CON REDES SOCIALES LIMPIAS Y SIN PEDIDOS PROGRAMADOS -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-grid reveal-on-scroll">
                 <div class="footer-brand">
                     <h4>
                         <img src="logo.jpeg" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;" onerror="this.style.display='none'">
@@ -1551,7 +1775,6 @@
                     </h4>
                     <p>Repostería y panadería artesanal. Rescatando la esencia del horneado tradicional con ingredientes puros y recetas hechas con paciencia y cariño.</p>
                     
-                    <!-- REDES SOCIALES (SOLO ICONOS, DISCRETOS Y ALINEADOS) -->
                     <div class="footer-social-icons">
                         <a href="https://www.facebook.com/profile.php?id=100063627190976&locale=es_LA" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
                             <i class="fa-brands fa-facebook-f"></i>
@@ -1769,6 +1992,33 @@
             autoSliderIntervals = [];
         }
 
+        // CONTROLADOR DE EFECTO DE APARICIÓN SUAVE
+        let scrollObserver;
+        function initScrollAnimations() {
+            if ('IntersectionObserver' in window) {
+                if (scrollObserver) scrollObserver.disconnect();
+
+                scrollObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            scrollObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.12,
+                    rootMargin: '0px 0px -40px 0px'
+                });
+
+                document.querySelectorAll('.reveal-on-scroll:not(.revealed)').forEach(el => {
+                    scrollObserver.observe(el);
+                });
+            } else {
+                // Fallback para navegadores antiguos
+                document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+            }
+        }
+
         function showView(targetView) {
             const views = {
                 home: document.getElementById('viewHome'),
@@ -1812,6 +2062,8 @@
             } else {
                 clearAutoSliders();
             }
+
+            setTimeout(initScrollAnimations, 100);
         }
 
         function scrollToHomeSection(sectionId, navLinkId) {
@@ -1843,6 +2095,7 @@
             setTimeout(() => {
                 const el = document.getElementById(sectionId);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
+                initScrollAnimations();
             }, 60);
         }
 
@@ -1872,7 +2125,7 @@
 
             filtered.forEach((product, idx) => {
                 const card = document.createElement('div');
-                card.className = 'product-card';
+                card.className = 'product-card reveal-on-scroll';
 
                 const mainImage = product.images[0];
                 const hasMultiplePhotos = product.images.length > 1;
@@ -1929,6 +2182,8 @@
                     autoSliderIntervals.push(interval);
                 }
             });
+
+            setTimeout(initScrollAnimations, 50);
         }
 
         function getCategoryBadge(cat) {
@@ -2093,6 +2348,7 @@
             }
 
             renderCatalog();
+            initScrollAnimations();
         });
     </script>
 </body>
