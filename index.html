@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Toshi | Repostería y Panadería Artesanal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4b167a;
+            --primary-hover: #370d5c;
+            --secondary: #009edb;
+            --accent: #f4effa;
+            --bg-light: #faf9f6;
+            --surface: #ffffff;
+            --text-dark: #231c28;
+            --text-muted: #5e5963;
+            --border: #e8e2ee;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 16px 36px rgba(75, 22, 122, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .brand-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        .brand-text h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .brand-text span {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.7rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* VISTAS */
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active-view {
+            display: block;
+            animation: fadeIn 0.35s ease-out;
+        }
+
+        /* HERO CON FONDO.JPEG */
+        .hero {
+            position: relative;
+            min-height: 84vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            background: linear-gradient(180deg, rgba(20, 18, 16, 0.58) 0%, rgba(15, 12, 10, 0.76) 100%), 
+                        url('fondo.jpeg') center center / cover no-repeat;
+            background-attachment: fixed;
+            padding: 90px 20px;
+        }
+
+        .hero-content {
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.3rem, 5.2vw, 4rem);
+            line-height: 1.18;
+            margin-bottom: 22px;
+            font-weight: 700;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero p {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            margin-bottom: 36px;
+            color: #f7f5f0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            color: var(--primary);
+            padding: 16px 36px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #fdfdfd;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #ffffff;
+            padding: 15px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-3px);
+        }
+
+        .btn-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 15px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 22px rgba(75, 22, 122, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-call:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px);
+        }
+
+        /* SECCIONES COMUNES */
+        .section-padding {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-header span {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.4vw, 2.6rem);
+            color: var(--primary);
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.08rem;
+        }
+
+        /* NOSOTROS EN INICIO (FOTO1.JPEG LIMPIO) */
+        .about-section {
+            background: #ffffff;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-visual {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .about-image-main {
+            width: 100%;
+            max-width: 480px;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 22px;
+            box-shadow: var(--shadow-soft);
+            cursor: zoom-in;
+            transition: var(--transition);
+        }
+
+        .about-image-main:hover {
+            transform: scale(1.02);
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.2vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.25;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            margin-bottom: 16px;
+        }
+
+        .about-checklist {
+            list-style: none;
+            margin: 22px 0 30px 0;
+        }
+
+        .about-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            font-size: 0.98rem;
+        }
+
+        .about-checklist i {
+            color: var(--secondary);
+            font-size: 1.15rem;
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            padding: 40px 28px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: #d8cde3;
+        }
+
+        .feature-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: var(--accent);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 20px auto;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            background: var(--primary);
+            color: #ffffff;
+            transform: scale(1.06);
+        }
+
+        .feature-card h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.96rem;
+        }
+
+        /* CONTACTO INICIO */
+        .contact-cta {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 55px 35px;
+            text-align: center;
+            margin: 30px auto 70px auto;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.6vw, 2.7rem);
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+
+        .contact-cta p {
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin: 0 auto 32px auto;
+            color: var(--text-muted);
+        }
+
+        .contact-buttons-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* CATÁLOGO PRODUCTOS */
+        .catalog-page {
+            padding: 40px 0 90px 0;
+            background-color: var(--bg-light);
+            min-height: 85vh;
+        }
+
+        .catalog-top-bar {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .catalog-top-bar h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .catalog-top-bar p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 24px auto;
+        }
+
+        .catalog-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 18px 12px 42px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: var(--bg-light);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(75, 22, 122, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 9px 18px;
+            border-radius: 25px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: #cebfde;
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            height: 245px;
+            background: #f6f3f8;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .slider-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
+            background: rgba(35, 28, 40, 0.7);
+            color: #fff;
+            font-size: 0.72rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 2;
+        }
+
+        .product-badge-cat {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            padding: 4px 11px;
+            border-radius: 20px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
+            z-index: 1;
+        }
+
+        .product-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.22rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .product-highlight {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            margin-bottom: 14px;
+        }
+
+        .btn-order-single {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primary);
+            color: #fff;
+            padding: 11px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-order-single:hover {
+            background: var(--primary-hover);
+        }
+
+        .empty-products {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: #fff;
+            border-radius: var(--radius-lg);
+            border: 1px dashed var(--border);
+        }
+
+        /* PÁGINA MESAS DE DULCES / POSTRES */
+        .dessert-page {
+            padding: 40px 0 90px 0;
+            background-color: var(--bg-light);
+            min-height: 85vh;
+        }
+
+        .dessert-top-bar {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 36px 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .dessert-top-bar h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .dessert-top-bar p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .dessert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-bottom: 45px;
+        }
+
+        .dessert-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .dessert-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: #cebfde;
+        }
+
+        .dessert-img-container {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            background: #f6f3f8;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .dessert-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .dessert-card-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .dessert-card-content h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .dessert-card-content p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* INFORMACIÓN INFERIOR DE MESAS */
+        .dessert-info-section {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 45px 35px;
+            box-shadow: var(--shadow-soft);
+            margin-top: 20px;
+        }
+
+        .dessert-info-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+        }
+
+        .dessert-info-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .dessert-info-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .dessert-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .dessert-spec-box {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .dessert-spec-box i {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .dessert-spec-box h5 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .dessert-spec-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        .dessert-cta-action {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* LIGHTBOX MANUAL */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(14, 8, 22, 0.94);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            user-select: none;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            background: #111;
+        }
+
+        .lightbox-caption {
+            margin-top: 14px;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .lightbox-counter {
+            margin-top: 4px;
+            color: #c0b8c9;
+            font-size: 0.85rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--secondary);
+            transform: scale(1.15);
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+            z-index: 2005;
+        }
+
+        .lightbox-arrow:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: -60px;
+        }
+
+        .lightbox-next {
+            right: -60px;
+        }
+
+        /* FOOTER CON REDES SOCIALES LIMPIAS */
+        footer {
+            background: #18141d;
+            color: #c0b8c9;
+            padding: 65px 0 28px 0;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 45px;
+            margin-bottom: 45px;
+        }
+
+        .footer-brand h4 {
+            color: #fff;
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand p {
+            font-size: 0.94rem;
+            line-height: 1.6;
+            max-width: 380px;
+            margin-bottom: 18px;
+        }
+
+        /* REDES SOCIALES SÓLO ICONOS, DISCRETAS Y BIEN ALINEADAS */
+        .footer-social-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .social-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #c0b8c9;
+            font-size: 1.15rem;
+            transition: var(--transition);
+        }
+
+        .social-icon-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer-col h5 {
+            color: #fff;
+            font-size: 1.08rem;
+            margin-bottom: 16px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links button, .footer-links a {
+            color: #c0b8c9;
+            font-size: 0.92rem;
+            transition: var(--transition);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+            padding: 0;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links button:hover, .footer-links a:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 26px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 0.86rem;
+            color: #847a90;
+        }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: #ffffff;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .about-checklist li {
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                flex-direction: column;
+                gap: 0;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+                display: none;
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 14px 0;
+            }
+
+            .nav-link.active::after {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto 16px auto;
+            }
+
+            .footer-social-icons {
+                justify-content: center;
+            }
+
+            .footer-col h5::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .contact-cta {
+                padding: 40px 20px;
+            }
+
+            .dessert-info-section {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons, .contact-buttons-row, .dessert-cta-action {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-whatsapp, .btn-call {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="brand-link" id="brandBtn">
+                <img src="logo.jpeg" alt="Cake Toshi" class="brand-logo" onerror="this.src='https://placehold.co/100x100/4b167a/ffffff?text=Cake+Toshi'">
+                <div class="brand-text">
+                    <h1>Cake Toshi</h1>
+                    <span>Repostería Artesanal</span>
+                </div>
+            </div>
+
+            <button class="mobile-toggle" id="menuToggle" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><button type="button" class="nav-link active" id="btnNavHome">Inicio</button></li>
+                <li><button type="button" class="nav-link" id="btnNavCatalog">Nuestros Productos</button></li>
+                <li><button type="button" class="nav-link" id="btnNavDessert">Mesas de Postres</button></li>
+                <li><button type="button" class="nav-link" id="btnNavAbout">Nosotros</button></li>
+                <li><button type="button" class="nav-link" id="btnNavContact">Contacto</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- PÁGINA 1: INICIO -->
+    <main id="viewHome" class="page-view active-view">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <i class="fa-solid fa-wheat-awn"></i> Horneado con amor y paciencia
+                </div>
+                <h2>El aroma de lo auténtico, el placer de lo artesanal</h2>
+                <p>En Cake Toshi transformamos ingredientes selectos en memorias dulces. Cada masa y horneada lleva el cuidado de las recetas preparadas a fuego lento y con dedicación sincera.</p>
+                <div class="hero-buttons">
+                    <button type="button" class="btn-primary" id="btnHeroCatalog">
+                        <i class="fa-solid fa-utensils"></i> Explorar Productos
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN NOSOTROS (CON FOTO1.JPEG Y SIN RECUADRO SUPERPUESTO) -->
+        <section class="section-padding about-section" id="aboutSection">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-visual">
+                        <img src="foto1.jpeg" alt="Taller de panadería Cake Toshi" class="about-image-main" onclick="openGallery(['foto1.jpeg'], 'Cake Toshi')" onerror="this.src='https://placehold.co/600x700/4b167a/ffffff?text=Cake+Toshi'">
+                    </div>
+                    <div class="about-content">
+                        <h3>El Placer de Compartir Buena Mesa</h3>
+                        <p>Cake Toshi nació de la admiración por el oficio panadero clásico: ese momento íntimo en que el horno comienza a despedir su fragancia y sabemos que algo reconfortante está listo para salir.</p>
+                        <p>Desde nuestro pan de mesa y conchas tradicionales, hasta los cheesecakes, bocadillos finos y montajes de mesas de dulces y postres para tus eventos especiales, buscamos que cada mordida transmita calidez de hogar y auténtico sabor.</p>
+                        
+                        <ul class="about-checklist">
+                            <li><i class="fa-solid fa-circle-check"></i> Sin conservadores agresivos ni premezclas ultraprocesadas.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Fermentaciones cuidadas y horneado diario con materia prima selecta.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Mesas de dulces y postres personalizadas para todo tipo de celebraciones.</li>
+                        </ul>
+
+                        <button type="button" class="btn-primary" style="background: var(--primary); color: #fff;" id="btnAboutCatalog">
+                            Ver Productos en Vitrina
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PILARES -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span>Nuestra Promesa</span>
+                    <h3>El Secreto de Nuestro Taller</h3>
+                    <p>No usamos atajos industriales ni saborizantes artificiales. Creemos en el tiempo correcto de fermentación y en el sabor genuino de la buena cocina.</p>
+                </div>
+
+                <div class="grid-features">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-bread-slice"></i>
+                        </div>
+                        <h4>Proceso Tradicional</h4>
+                        <p>Respetamos las fermentaciones naturales y las técnicas que otorgan una textura dorada y crujiente por fuera, y suave por dentro.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <h4>Ingredientes Nobles</h4>
+                        <p>Mantequilla pura, fruta seleccionada en su punto óptimo, frutos secos frescos y harinas que cuidan tu digestión.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h4>Elaboración a Pedido</h4>
+                        <p>Horneamos para que recibas piezas frescas y con todo su perfume, pensadas para compartir en familia o consentir un antojo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO INICIO -->
+        <section class="container" id="contactSection">
+            <div class="contact-cta">
+                <h3>¿Planeando una reunión, evento o un antojo especial?</h3>
+                <p>Te atendemos con gusto para tomar tu pedido artesanal, cotizar tu mesa de postres o confirmar disponibilidad del día.</p>
+                
+                <div class="contact-buttons-row">
+                    <a href="tel:5534525152" class="btn-call">
+                        <i class="fa-solid fa-phone"></i> Llamar
+                    </a>
+                    <a href="https://wa.me/525534525152" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Contacto
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PÁGINA 2: NUESTROS PRODUCTOS -->
+    <main id="viewCatalog" class="page-view catalog-page">
+        <div class="container">
+            <div class="catalog-top-bar">
+                <h2>Vitrina de Productos Artesanales</h2>
+                <p>Nuestra selección de pan dulce, pan de mesa, galletas crujientes, postres fríos y opciones saladas elaboradas cada día.</p>
+                
+                <div class="catalog-controls">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar por nombre de producto...">
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button type="button" class="filter-btn active" data-filter="todos">Todos</button>
+                        <button type="button" class="filter-btn" data-filter="panaderia">Panadería & Dulce</button>
+                        <button type="button" class="filter-btn" data-filter="reposteria">Pasteles & Cheesecakes</button>
+                        <button type="button" class="filter-btn" data-filter="galletas">Galletas</button>
+                        <button type="button" class="filter-btn" data-filter="salado">Mesa & Especiales</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </main>
+
+    <!-- PÁGINA 3: MESAS DE DULCES Y POSTRES -->
+    <main id="viewDessert" class="page-view dessert-page">
+        <div class="container">
+            <div class="dessert-top-bar">
+                <h2>Mesas de Dulces & Postres para Eventos</h2>
+                <p>Las fotos cambian automáticamente en las colecciones. Haz clic en cualquiera de ellas para verla completa y navegar con las flechas.</p>
+            </div>
+
+            <div class="dessert-grid">
+                <!-- Montaje General -->
+                <div class="dessert-card">
+                    <div class="dessert-img-container" onclick="openGallery(['mesa1.jpeg'], 'Montaje Integral de Mesa')">
+                        <img src="mesa1.jpeg" alt="Montaje completo de mesa de postres temática" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Mesa+de+Postres'">
+                    </div>
+                    <div class="dessert-card-content">
+                        <h4>Montaje Integral de Mesa</h4>
+                        <p>Diseño escalonado completo con variedad de postres fríos, panquecitos y bocadillos temáticos.</p>
+                    </div>
+                </div>
+
+                <!-- Cupcakes Temáticos (Agrupando mesa3, mesa2 y mesa6 con carrusel automático) -->
+                <div class="dessert-card">
+                    <div class="dessert-img-container" 
+                         data-images='["mesa3.jpeg", "mesa2.jpeg", "mesa6.jpeg"]' 
+                         data-title="Cupcakes & Toppers Temáticos"
+                         onclick="openGallery(['mesa3.jpeg', 'mesa2.jpeg', 'mesa6.jpeg'], 'Cupcakes & Toppers Temáticos', this.dataset.currentIndex || 0)">
+                        <img id="dessert-cupcakes-img" src="mesa3.jpeg" alt="Cupcakes decorados temáticos" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Cupcakes+Tematicos'">
+                        <span class="slider-indicator"><i class="fa-solid fa-images"></i> <span class="indicator-text">1/3</span></span>
+                    </div>
+                    <div class="dessert-card-content">
+                        <h4>Cupcakes & Toppers Temáticos</h4>
+                        <p>Torres de madera y charolas con panquecitos artesanales y decoraciones acorde al motivo de tu evento.</p>
+                    </div>
+                </div>
+
+                <!-- Vasitos Gourmet -->
+                <div class="dessert-card">
+                    <div class="dessert-img-container" onclick="openGallery(['mesa8.jpeg'], 'Vasitos Gourmet Individuales')">
+                        <img src="mesa8.jpeg" alt="Torre de postres individuales en vasito" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Vasitos+Gourmet'">
+                    </div>
+                    <div class="dessert-card-content">
+                        <h4>Vasitos Gourmet Individuales</h4>
+                        <p>Porciones personales de postres cremosos fríos con galleta y crema, servidos en domos higiénicos.</p>
+                    </div>
+                </div>
+
+                <!-- Mini Brownies -->
+                <div class="dessert-card">
+                    <div class="dessert-img-container" onclick="openGallery(['mesa5.jpeg'], 'Mini Brownies con Fruta')">
+                        <img src="mesa5.jpeg" alt="Mini brownies individuales con fruta fresca" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Mini+Brownies'">
+                    </div>
+                    <div class="dessert-card-content">
+                        <h4>Mini Brownies con Fruta</h4>
+                        <p>Bocadillos densos de cacao con fresas frescas empacados individualmente para preservar su textura.</p>
+                    </div>
+                </div>
+
+                <!-- Recuerdos y Panquecitos Empaquetados -->
+                <div class="dessert-card">
+                    <div class="dessert-img-container" onclick="openGallery(['mesa7.jpeg'], 'Detalles Personalizados')">
+                        <img src="mesa7.jpeg" alt="Postres y panquecitos empaquetados para eventos" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Detalles+Personalizados'">
+                    </div>
+                    <div class="dessert-card-content">
+                        <h4>Detalles Personalizados</h4>
+                        <p>Panqués y bocadillos sellados en bolsitas individuales con stickers conmemorativos de la celebración.</p>
+                    </div>
+                </div>
+
+                <!-- Barra Salada y Palomitas (Agrupando mesa4 y WhatsApp Image con carrusel automático) -->
+                <div class="dessert-card">
+                    <div class="dessert-img-container" 
+                         data-images='["mesa4.jpeg", "WhatsApp Image 2026-10-14 at 5.26.21 PM (5).jpeg"]' 
+                         data-title="Barra de Botanas & Palomitas"
+                         onclick="openGallery(['mesa4.jpeg', 'WhatsApp Image 2026-10-14 at 5.26.21 PM (5).jpeg'], 'Barra de Botanas & Palomitas', this.dataset.currentIndex || 0)">
+                        <img id="dessert-snacks-img" src="mesa4.jpeg" alt="Estación de botanas y palomitas" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=Barra+Salada'">
+                        <span class="slider-indicator"><i class="fa-solid fa-images"></i> <span class="indicator-text">1/2</span></span>
+                    </div>
+                    <div class="dessert-card-content">
+                        <h4>Barra de Botanas & Palomitas</h4>
+                        <p>Canastas rústicas y charolas con palomitas de mantequilla y botanas saladas con salsas para variedad total.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DESCRIPCIÓN DE MESAS -->
+            <section class="dessert-info-section">
+                <div class="dessert-info-header">
+                    <span>Opciones y Montajes</span>
+                    <h3>¿Qué puede incluir tu Mesa de Postres y Dulces?</h3>
+                    <p>Armamos cada paquete según el número de invitados, el espacio y la temática de tu festejo. Todas las opciones se entregan listas para disfrutarse con presentación impecable.</p>
+                </div>
+
+                <div class="dessert-specs-grid">
+                    <div class="dessert-spec-box">
+                        <i class="fa-solid fa-cake-candles"></i>
+                        <h5>Repostería Individual</h5>
+                        <p>Mini brownies con fresa, rebanaditas de panqué, alfajores, galletas finas y vasitos de postre frío cremoso.</p>
+                    </div>
+
+                    <div class="dessert-spec-box">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <h5>Temática & Decoración</h5>
+                        <p>Montajes en torres de madera, charolas de servicio, bases rústicas y toppers o etiquetas impresas con el nombre o tema de tu evento.</p>
+                    </div>
+
+                    <div class="dessert-spec-box">
+                        <i class="fa-solid fa-bowl-food"></i>
+                        <h5>Estación Mixta Dulce y Salada</h5>
+                        <p>Bolsitas selladas de palomitas caseras, frituras, botanitas variadas y complementos para satisfacer a chicos y grandes.</p>
+                    </div>
+
+                    <div class="dessert-spec-box">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        <h5>Presentación e Higiene</h5>
+                        <p>Cada pieza se entrega en domos individuales o empaque grado alimenticio, facilitando que tus invitados tomen su porción fácilmente.</p>
+                    </div>
+                </div>
+
+                <div class="dessert-cta-action">
+                    <a href="https://wa.me/525534525152" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Contacto
+                    </a>
+                    <a href="tel:5534525152" class="btn-call">
+                        <i class="fa-solid fa-phone"></i> Llamar
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- LIGHTBOX MODAL CON FLECHAS MANUALES -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">&times;</button>
+            
+            <button type="button" class="lightbox-arrow lightbox-prev" id="lightboxPrev" onclick="navigateLightbox(-1)" aria-label="Foto anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="lightbox-arrow lightbox-next" id="lightboxNext" onclick="navigateLightbox(1)" aria-label="Foto siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <img id="lightboxImg" src="" alt="Foto ampliada">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+            <div id="lightboxCounter" class="lightbox-counter"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER CON REDES SOCIALES LIMPIAS Y SIN PEDIDOS PROGRAMADOS -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>
+                        <img src="logo.jpeg" alt="Logo" style="width: 32px; height: 32px; border-radius: 50%;" onerror="this.style.display='none'">
+                        Cake Toshi
+                    </h4>
+                    <p>Repostería y panadería artesanal. Rescatando la esencia del horneado tradicional con ingredientes puros y recetas hechas con paciencia y cariño.</p>
+                    
+                    <!-- REDES SOCIALES (SOLO ICONOS, DISCRETOS Y ALINEADOS) -->
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100063627190976&locale=es_LA" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/caketoshi/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Navegación</h5>
+                    <ul class="footer-links">
+                        <li><button type="button" id="btnFootHome">Inicio</button></li>
+                        <li><button type="button" id="btnFootCatalog">Nuestros Productos</button></li>
+                        <li><button type="button" id="btnFootDessert">Mesas de Postres</button></li>
+                        <li><button type="button" id="btnFootAbout">Nosotros</button></li>
+                        <li><button type="button" id="btnFootContact">Contacto</button></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Atención al Cliente</h5>
+                    <ul class="footer-links">
+                        <li><a href="tel:5534525152"><i class="fa-solid fa-phone"></i> Llamar</a></li>
+                        <li><a href="https://wa.me/525534525152" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; Cake Toshi - Repostería y Panadería Artesanal. Calidad horneada con dedicación.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/525534525152" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contacto por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPT -->
+    <script>
+        const productsData = [
+            {
+                name: "Galletas de nuez",
+                category: "galletas",
+                images: ["Galletas de nuez.jpeg"],
+                description: "Delicadas galletas artesanales enriquecidas con trozos de nuez tostada, de textura dorada y crujiente al morder.",
+                highlight: "Fruto seco selecto"
+            },
+            {
+                name: "Pay de queso",
+                category: "reposteria",
+                images: ["Pay de queso.jpeg"],
+                description: "Receta tradicional con relleno cremoso y base horneada al punto exacto de dorado y suavidad.",
+                highlight: "Clásico horneado"
+            },
+            {
+                name: "Rebanadas de panque de nata y cubiletes de queso",
+                category: "panaderia",
+                images: ["Rebanadas de panque de nata y cubiletes de queso.jpeg"],
+                description: "Empaque surtido con la suavidad inconfundible de la nata pura y la textura cremosa del cubilete de queso.",
+                highlight: "Empaque individual"
+            },
+            {
+                name: "Conchas de Talavera",
+                category: "panaderia",
+                images: ["Conchas de Talavera.jpeg"],
+                description: "Pan de concha tradicional decorado a mano con trazos inspirados en el arte de Talavera.",
+                highlight: "Decorado a mano"
+            },
+            {
+                name: "Cubiletes de queso",
+                category: "panaderia",
+                images: ["Cubiletes de queso.jpeg"],
+                description: "Base dorada de costra crujiente rellena de una generosa porción de queso dulce horneado.",
+                highlight: "Relleno horneado"
+            },
+            {
+                name: "Conchas",
+                category: "panaderia",
+                images: ["Conchas1.jpeg", "Conchas2.jpeg"],
+                description: "Miga esponjosa con aroma a mantequilla y la clásica costra dulce de textura irresistible.",
+                highlight: "2 vistas disponibles"
+            },
+            {
+                name: "Bolillos",
+                category: "salado",
+                images: ["Bolillos.jpeg"],
+                description: "De un gramaje de 50 grs para que puedan comer los que quieran. Pan de corteza crujiente y migajón ligero recién salido del horno.",
+                highlight: "Gramaje de 50 grs"
+            },
+            {
+                name: "Croissant",
+                category: "panaderia",
+                images: ["Croissant.jpeg"],
+                description: "Capas finas de hojaldre preparadas pacientemente para lograr un interior aireado y un exterior dorado con mantequilla.",
+                highlight: "Hojaldre de mantequilla"
+            },
+            {
+                name: "Cheesecake frío de mango",
+                category: "reposteria",
+                images: ["Cheesecake frío de mango.jpeg"],
+                description: "Postre fresco y ligero elaborado con pulpa natural de mango seleccionada sobre una suave base de galleta.",
+                highlight: "Fruta natural"
+            },
+            {
+                name: "Panqués de nata",
+                category: "panaderia",
+                images: ["Panqués de nata.jpeg"],
+                description: "Receta horneada con nata de leche pura que aporta una humedad y esponjosidad inigualable.",
+                highlight: "Nata pura de leche"
+            },
+            {
+                name: "Gelatina de queso",
+                category: "reposteria",
+                images: ["Gelatina de queso.jpeg"],
+                description: "Textura tersa y sabor balanceado de queso con un moldeado artesanal creativo y vistoso.",
+                highlight: "Moldeado especial"
+            },
+            {
+                name: "Brownie con cheesecakes",
+                category: "reposteria",
+                images: ["Brownie con cheesecakes.jpeg"],
+                description: "Fusión irresistible entre la intensidad del chocolate denso y el suave marmoleado de queso crema.",
+                highlight: "Marmoleado de chocolate y queso"
+            },
+            {
+                name: "Bolillos de masa madre",
+                category: "salado",
+                images: ["Bolillos de masa madre.jpeg"],
+                description: "Fermentación lenta y natural con masa madre propia, logrando una corteza rústica y mayor digestibilidad.",
+                highlight: "Fermentación lenta natural"
+            },
+            {
+                name: "Tiramisú",
+                category: "reposteria",
+                images: ["Tiramisú.jpeg"],
+                description: "Elegante postre bañado en notas de café y coronado con cacao fino, ideal para celebraciones y sobremesas.",
+                highlight: "Café selecto y cacao"
+            },
+            {
+                name: "Panque",
+                category: "panaderia",
+                images: ["Panque.jpeg"],
+                description: "Bizcocho tradicional de miga densa y tierna, horneado con vainilla pura y mantequilla.",
+                highlight: "Sabor casero"
+            },
+            {
+                name: "Roles de canela",
+                category: "panaderia",
+                images: ["Roles de canela.jpeg"],
+                description: "Espirales suaves colmadas de canela aromática, azúcar morena y pasas para acompañar el café.",
+                highlight: "Canela y pasas"
+            },
+            {
+                name: "Cheesecake de mango",
+                category: "reposteria",
+                images: ["Cheesecake de mango.jpeg"],
+                description: "Elaboración horneada de queso con vetas de mango y delicada cobertura de chocolate y fruta.",
+                highlight: "Horneado con vetas de mango"
+            },
+            {
+                name: "Galletas de avena y arándanos",
+                category: "galletas",
+                images: ["Galletas de avena y arándanos.jpeg"],
+                description: "Hojuelas de avena integral combinadas con la acidez jugosa de los arándanos rojos.",
+                highlight: "Avena y arándanos"
+            },
+            {
+                name: "Galletas de extrachocolate",
+                category: "galletas",
+                images: ["Galletas de extrachocolate.jpeg"],
+                description: "Para los amantes del buen cacao: textura suave, ricas en chocolate y con intenso sabor tostado.",
+                highlight: "Cacao intenso"
+            },
+            {
+                name: "Hamburguesa diferente",
+                category: "salado",
+                images: ["Hamburguesa diferente.jpeg"],
+                description: "Pan horneado artesanalmente con sésamo, carne sazonada al punto y servida con papas crujientes.",
+                highlight: "Con papas incluidas"
+            },
+            {
+                name: "Cheesecake de queso con mermelada de frutos rojos artesanal",
+                category: "reposteria",
+                images: ["Cheesecake de queso con mermelada de frutos rojos artesanal.jpeg"],
+                description: "Cheesecake coronado con mermelada casera de fresas, zarzamoras y frambuesas cocinada a fuego lento.",
+                highlight: "Mermelada hecha en casa"
+            },
+            {
+                name: "Telera",
+                category: "salado",
+                images: ["Telera.jpeg"],
+                description: "Pan de corteza suave y cuerpo esponjoso, ideal para preparar las mejores tortas tradicionales.",
+                highlight: "Suavidad tradicional"
+            },
+            {
+                name: "Spaghetti a la boloñesa",
+                category: "salado",
+                images: ["Spaghetti a la boloñesa.jpeg"],
+                description: "Pasta al dente acompañada de salsa boloñesa con carne de primera calidad sazonada con hierbas finas y tomate.",
+                highlight: "Receta casera completa"
+            }
+        ];
+
+        let currentCategory = 'todos';
+        let currentSearchQuery = '';
+
+        let autoSliderIntervals = [];
+
+        function clearAutoSliders() {
+            autoSliderIntervals.forEach(interval => clearInterval(interval));
+            autoSliderIntervals = [];
+        }
+
+        function showView(targetView) {
+            const views = {
+                home: document.getElementById('viewHome'),
+                catalog: document.getElementById('viewCatalog'),
+                dessert: document.getElementById('viewDessert')
+            };
+
+            const navLinks = {
+                home: document.getElementById('btnNavHome'),
+                catalog: document.getElementById('btnNavCatalog'),
+                dessert: document.getElementById('btnNavDessert'),
+                about: document.getElementById('btnNavAbout'),
+                contact: document.getElementById('btnNavContact')
+            };
+
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) navMenu.classList.remove('open');
+
+            Object.values(views).forEach(v => {
+                if (v) v.classList.remove('active-view');
+            });
+
+            Object.values(navLinks).forEach(n => {
+                if (n) n.classList.remove('active');
+            });
+
+            if (views[targetView]) {
+                views[targetView].classList.add('active-view');
+            }
+
+            if (navLinks[targetView]) {
+                navLinks[targetView].classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (targetView === 'catalog') {
+                renderCatalog();
+            } else if (targetView === 'dessert') {
+                initDessertSliders();
+            } else {
+                clearAutoSliders();
+            }
+        }
+
+        function scrollToHomeSection(sectionId, navLinkId) {
+            const homeView = document.getElementById('viewHome');
+            const isHomeActive = homeView.classList.contains('active-view');
+
+            const navLinks = [
+                document.getElementById('btnNavHome'),
+                document.getElementById('btnNavCatalog'),
+                document.getElementById('btnNavDessert'),
+                document.getElementById('btnNavAbout'),
+                document.getElementById('btnNavContact')
+            ];
+
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) navMenu.classList.remove('open');
+
+            navLinks.forEach(n => { if (n) n.classList.remove('active'); });
+            const targetNav = document.getElementById(navLinkId);
+            if (targetNav) targetNav.classList.add('active');
+
+            if (!isHomeActive) {
+                document.getElementById('viewCatalog').classList.remove('active-view');
+                document.getElementById('viewDessert').classList.remove('active-view');
+                homeView.classList.add('active-view');
+                clearAutoSliders();
+            }
+
+            setTimeout(() => {
+                const el = document.getElementById(sectionId);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 60);
+        }
+
+        function renderCatalog() {
+            clearAutoSliders();
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const filtered = productsData.filter(item => {
+                const matchesCat = currentCategory === 'todos' || item.category === currentCategory;
+                const matchesSearch = item.name.toLowerCase().includes(currentSearchQuery.toLowerCase()) || 
+                                      item.description.toLowerCase().includes(currentSearchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-products">
+                        <i class="fa-solid fa-cookie-bite" style="font-size: 3rem; color: #bcaecf; margin-bottom: 14px;"></i>
+                        <h4 style="font-size: 1.3rem; color: var(--primary); margin-bottom: 8px;">No se encontraron productos</h4>
+                        <p style="color: var(--text-muted);">Intenta con otro término o limpia los filtros.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach((product, idx) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+
+                const mainImage = product.images[0];
+                const hasMultiplePhotos = product.images.length > 1;
+
+                let indicatorHtml = '';
+                if (hasMultiplePhotos) {
+                    indicatorHtml = `<span class="slider-indicator" id="indicator-${idx}"><i class="fa-solid fa-images"></i> 1/${product.images.length}</span>`;
+                }
+
+                card.innerHTML = `
+                    <div class="product-image-container" id="prod-container-${idx}">
+                        <span class="product-badge-cat">${getCategoryBadge(product.category)}</span>
+                        <img id="prod-img-${idx}" src="${mainImage}" alt="${product.name}" class="product-img" onerror="this.src='https://placehold.co/500x400/4b167a/ffffff?text=${encodeURIComponent(product.name)}'">
+                        ${indicatorHtml}
+                    </div>
+                    <div class="product-body">
+                        <h4 class="product-title">${product.name}</h4>
+                        <div>
+                            <span class="product-highlight">${product.highlight}</span>
+                        </div>
+                        <p class="product-description">${product.description}</p>
+                        <a href="https://wa.me/525534525152" target="_blank" rel="noopener noreferrer" class="btn-order-single">
+                            <i class="fa-brands fa-whatsapp"></i> Contacto
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+
+                const container = card.querySelector(`#prod-container-${idx}`);
+                container.onclick = () => {
+                    const currentIndex = parseInt(container.dataset.currentIndex || 0, 10);
+                    openGallery(product.images, product.name, currentIndex);
+                };
+
+                if (hasMultiplePhotos) {
+                    container.dataset.currentIndex = 0;
+                    let currentIdx = 0;
+                    const interval = setInterval(() => {
+                        currentIdx = (currentIdx + 1) % product.images.length;
+                        container.dataset.currentIndex = currentIdx;
+                        const img = document.getElementById(`prod-img-${idx}`);
+                        const ind = document.getElementById(`indicator-${idx}`);
+                        if (img) {
+                            img.style.opacity = 0;
+                            setTimeout(() => {
+                                img.src = product.images[currentIdx];
+                                img.style.opacity = 1;
+                            }, 250);
+                        }
+                        if (ind) {
+                            ind.innerHTML = `<i class="fa-solid fa-images"></i> ${currentIdx + 1}/${product.images.length}`;
+                        }
+                    }, 3000);
+                    autoSliderIntervals.push(interval);
+                }
+            });
+        }
+
+        function getCategoryBadge(cat) {
+            switch(cat) {
+                case 'panaderia': return 'Panadería';
+                case 'reposteria': return 'Pastel & Cheesecake';
+                case 'galletas': return 'Galleta';
+                case 'salado': return 'Mesa & Salado';
+                default: return 'Artesanal';
+            }
+        }
+
+        function initDessertSliders() {
+            clearAutoSliders();
+
+            const dessertContainers = document.querySelectorAll('.dessert-img-container[data-images]');
+            dessertContainers.forEach(container => {
+                const images = JSON.parse(container.getAttribute('data-images'));
+                const imgElement = container.querySelector('img');
+                const indicatorText = container.querySelector('.indicator-text');
+                let currentIdx = 0;
+                container.dataset.currentIndex = 0;
+
+                const interval = setInterval(() => {
+                    currentIdx = (currentIdx + 1) % images.length;
+                    container.dataset.currentIndex = currentIdx;
+                    if (imgElement) {
+                        imgElement.style.opacity = 0;
+                        setTimeout(() => {
+                            imgElement.src = images[currentIdx];
+                            imgElement.style.opacity = 1;
+                        }, 250);
+                    }
+                    if (indicatorText) {
+                        indicatorText.textContent = `${currentIdx + 1}/${images.length}`;
+                    }
+                }, 3200);
+
+                autoSliderIntervals.push(interval);
+            });
+        }
+
+        let activeGalleryImages = [];
+        let activeGalleryIndex = 0;
+        let activeGalleryTitle = '';
+
+        window.openGallery = function(imagesArray, title, startIndex = 0) {
+            activeGalleryImages = imagesArray;
+            activeGalleryIndex = parseInt(startIndex, 10) || 0;
+            activeGalleryTitle = title || '';
+
+            const modal = document.getElementById('lightboxModal');
+            const prevBtn = document.getElementById('lightboxPrev');
+            const nextBtn = document.getElementById('lightboxNext');
+
+            if (imagesArray.length > 1) {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+
+            updateLightboxContent();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        function updateLightboxContent() {
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            const count = document.getElementById('lightboxCounter');
+
+            img.src = activeGalleryImages[activeGalleryIndex];
+            cap.textContent = activeGalleryTitle;
+            
+            if (activeGalleryImages.length > 1) {
+                count.textContent = `Foto ${activeGalleryIndex + 1} de ${activeGalleryImages.length}`;
+                count.style.display = 'block';
+            } else {
+                count.style.display = 'none';
+            }
+        }
+
+        window.navigateLightbox = function(direction) {
+            if (activeGalleryImages.length <= 1) return;
+            activeGalleryIndex = (activeGalleryIndex + direction + activeGalleryImages.length) % activeGalleryImages.length;
+            updateLightboxContent();
+        };
+
+        window.closeLightbox = function() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('lightboxModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+            }
+        });
+
+        // EVENTOS DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnNavHome = document.getElementById('btnNavHome');
+            const btnNavCatalog = document.getElementById('btnNavCatalog');
+            const btnNavDessert = document.getElementById('btnNavDessert');
+            const btnNavAbout = document.getElementById('btnNavAbout');
+            const btnNavContact = document.getElementById('btnNavContact');
+            const brandBtn = document.getElementById('brandBtn');
+
+            if (btnNavHome) btnNavHome.onclick = () => showView('home');
+            if (btnNavCatalog) btnNavCatalog.onclick = () => showView('catalog');
+            if (btnNavDessert) btnNavDessert.onclick = () => showView('dessert');
+            if (btnNavAbout) btnNavAbout.onclick = () => scrollToHomeSection('aboutSection', 'btnNavAbout');
+            if (btnNavContact) btnNavContact.onclick = () => scrollToHomeSection('contactSection', 'btnNavContact');
+            if (brandBtn) brandBtn.onclick = () => showView('home');
+
+            const btnHeroCatalog = document.getElementById('btnHeroCatalog');
+            const btnAboutCatalog = document.getElementById('btnAboutCatalog');
+
+            if (btnHeroCatalog) btnHeroCatalog.onclick = () => showView('catalog');
+            if (btnAboutCatalog) btnAboutCatalog.onclick = () => showView('catalog');
+
+            const btnFootHome = document.getElementById('btnFootHome');
+            const btnFootCatalog = document.getElementById('btnFootCatalog');
+            const btnFootDessert = document.getElementById('btnFootDessert');
+            const btnFootAbout = document.getElementById('btnFootAbout');
+            const btnFootContact = document.getElementById('btnFootContact');
+
+            if (btnFootHome) btnFootHome.onclick = () => showView('home');
+            if (btnFootCatalog) btnFootCatalog.onclick = () => showView('catalog');
+            if (btnFootDessert) btnFootDessert.onclick = () => showView('dessert');
+            if (btnFootAbout) btnFootAbout.onclick = () => scrollToHomeSection('aboutSection', 'btnNavAbout');
+            if (btnFootContact) btnFootContact.onclick = () => scrollToHomeSection('contactSection', 'btnNavContact');
+
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (menuToggle && navMenu) {
+                menuToggle.onclick = () => navMenu.classList.toggle('open');
+            }
+
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.onclick = () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.getAttribute('data-filter');
+                    renderCatalog();
+                };
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.oninput = (e) => {
+                    currentSearchQuery = e.target.value;
+                    renderCatalog();
+                };
+            }
+
+            renderCatalog();
+        });
+    </script>
+</body>
+</html>
