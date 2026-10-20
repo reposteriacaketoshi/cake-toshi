@@ -66,7 +66,7 @@
             padding: 0 20px;
         }
 
-        /* EFECTO SUAVE AL APARECER EN PANTALLA (REVELADO POR SCROLL / PRIMERA CARGA) */
+        /* EFECTO SUAVE AL APARECER EN PANTALLA */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(28px);
@@ -1883,6 +1883,20 @@
                 highlight: "Fruta natural"
             },
             {
+                name: "Cheesecake de café",
+                category: "reposteria",
+                images: ["cheesecake de cafe.jpeg"],
+                description: "Exquisito cheesecake horneado infusionado con notas de café selecto, cobertura de chocolate y frutos rojos en corona.",
+                highlight: "Aroma a café y cacao"
+            },
+            {
+                name: "Cheesecake de queso con frutos rojos",
+                category: "reposteria",
+                images: ["cheesecake frutos rojos1.jpeg", "cheesecake frutos rojos2.jpeg"],
+                description: "Cheesecake horneado de textura sedosa cubierto con abundante jalea de frutos rojos y decorado con fresas frescas fileteadas.",
+                highlight: "2 vistas disponibles"
+            },
+            {
                 name: "Panqués de nata",
                 category: "panaderia",
                 images: ["Panqués de nata.jpeg"],
@@ -2014,7 +2028,6 @@
                     scrollObserver.observe(el);
                 });
             } else {
-                // Fallback para navegadores antiguos
                 document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
             }
         }
